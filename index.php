@@ -2,19 +2,21 @@
 /**
  * Copyright (C) 2019-2024 Paladin Business Solutions
  */
-
+ob_start() ;
 session_start();
 
 require_once('includes/ringcentral-functions.inc');
 require_once('includes/ringcentral-php-functions.inc');
 
+show_errors();
+
 page_header(0);
 
 function show_form ($message, $label = "", $print_again = false) {
-    show_errors();
+
     ?>
     <form action="" method="post" enctype="multipart/form-data">
-        <table class="CustomTable" >
+        <table class="EditTable" >
             <tr class="CustomTable">
                 <td colspan="2" class="CustomTableFullCol">
                     <img src="images/rc-logo.png"/>
@@ -53,7 +55,11 @@ function show_form ($message, $label = "", $print_again = false) {
                 </td>
             </tr>
             <tr class="CustomTable">
-                <td colspan="2" class="CustomTableFullCol">
+                <td class="CustomTableFullCol">
+                    <br/>
+                    <input type="submit" class="submit_button" value="   List Faxes   " name="list_faxes">
+                </td>
+                <td class="CustomTableFullCol">
                     <br/>
                     <input type="submit" class="submit_button" value="   Send Fax   " name="send_fax">
                 </td>
@@ -119,10 +125,12 @@ function check_form () {
 /* ============= */
 if (isset($_POST['send_fax'])) {
     check_form();
+} elseif (isset($_POST['list_faxes'])) {
+    header("Location: list_faxes.php");
 } else {
     $message = "Please provide information to be faxed. <br/><br/>";
     show_form($message);
 }
 
-
+ob_end_flush();
 page_footer();

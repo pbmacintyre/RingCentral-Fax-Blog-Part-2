@@ -10,7 +10,7 @@
 .CustomTable {
     background-color: white !important;
     margin-top: 40px;
-    width: 650px;
+    width: 1150px;
     /* border: 1px solid red ; */
     padding: 30px;
     margin-left: auto;
@@ -42,6 +42,10 @@
 }
 .right_col {
     width: 50% !important;
+    vertical-align: top;
+}
+.center_col {
+    text-align: center;
     vertical-align: top;
 }
 /* =====================  */
@@ -185,4 +189,13 @@
     50% {
         opacity: 0;
     }
+}
+
+#pdf-container {
+    width: 80%;
+    height: 600px; /* Set the height as needed */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
 }
