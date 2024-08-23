@@ -72,10 +72,9 @@ function send_fax ($to_fax_number, $file_with_path, $cover_note) {
 function get_faxes () {
     $controller = ringcentral_sdk();
     $platform = $controller['platform'];
-    $sdk = $controller['SDK'];
 
     $dateTime = new DateTime('now', new DateTimeZone('AST'));
-    $fromDate = $startDateTime = $dateTime->modify('-48 hours')->format('Y-m-d\TH:i:s.v\Z');
+    $fromDate = $startDateTime = $dateTime->modify('-4 days')->format('Y-m-d\TH:i:s.v\Z');
 
     $queryParams = array(
         'availability' => array('Alive',),
@@ -124,7 +123,6 @@ function get_faxes () {
 function view_fax ($faxId) {
     $controller = ringcentral_sdk();
     $platform = $controller['platform'];
-    $sdk = $controller['SDK'];
 
     $resp = $platform->get("/account/~/extension/~/message-store/$faxId");
     $object = $resp->json();
